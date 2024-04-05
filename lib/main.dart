@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:notify_me/home_page.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 FlutterLocalNotificationsPlugin notificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -11,6 +13,8 @@ FlutterLocalNotificationsPlugin notificationsPlugin =
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Permission.notification.request();
+  tz.initializeTimeZones();
+  // tz.setLocalLocation(tz.getLocation());
 
   AndroidInitializationSettings androidSettings =
       AndroidInitializationSettings('@mipmap/ic_launcher');
